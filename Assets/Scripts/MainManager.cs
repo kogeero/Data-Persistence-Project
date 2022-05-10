@@ -25,6 +25,7 @@ public class MainManager : MonoBehaviour
     void Start()
     {
         UpdateHighScore();
+        AddPoint(0);
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -59,7 +60,6 @@ public class MainManager : MonoBehaviour
         else if (m_GameOver)
         {
             NewHighScore();
-            MainestManager.Instance.SaveScore();
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -73,7 +73,7 @@ public class MainManager : MonoBehaviour
         if (m_Points > MainestManager.Instance.m_HighScore) 
         {
             MainestManager.Instance.m_HighScore = m_Points;
-            MainestManager.Instance.highScoreName = MainestManager.Instance.currentName;
+            MainestManager.Instance.SaveScore();
             UpdateHighScore();
         }
     }

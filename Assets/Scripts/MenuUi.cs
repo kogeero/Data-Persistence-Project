@@ -24,7 +24,6 @@ public class MenuUi : MonoBehaviour
 
     public void Exit()
     {
-        MainestManager.Instance.SaveScore();
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
